@@ -1,16 +1,23 @@
 class Noeud: 
+
+    """Représente un nœud dans un arbre ou une expression arborescente."""
     def __init__(self, valeur, enfants=None):
         self.valeur = valeur
         self.enfants = enfants
         if self.enfants is None : self.enfants = []
 
     def ajouter_noeud(self, noeud):
+        """Ajoute un nouveau nœud enfant à la liste des enfants.
+
+        Lève une exception TypeError si l'objet passé n'est pas un Noeud.
+        """
         if not isinstance(noeud, Noeud):
             raise TypeError("Le type n'est pas un Noeud.")
         else :
             return self.liste.append(noeud)
 
     def affiche_exp(self):
+        """Représente l'arborescence avec un affichage polonais"""
         print(self.valeur, end=" ") 
         for noeud in self.enfants:
             noeud.affiche_exp()
